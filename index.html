@@ -18,6 +18,7 @@
                 <a 
                 @click.prevent="activePage = index"
                 class="nav-link" 
+                :class="{active: activePage == index}"
                 aria-current="page" 
                 :href="page.link.url" 
                 :title="`you are going to ${page.link.text} page`">
