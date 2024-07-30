@@ -16,6 +16,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li v-for="(page, index) in pages" class="nav-item" :key="index">
                 <a 
+                @click.prevent="activePage = index"
                 class="nav-link" 
                 aria-current="page" 
                 :href="page.link.url" 
@@ -32,8 +33,8 @@
         
       </nav>
     <div class="container" id="app">
-        <h1>{{ title }}</h1>
-        <p> {{content}} </p>
+        <h1>{{ pages[activePage].title }}</h1>
+        <p> {{pages[activePage].content}} </p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
@@ -41,6 +42,7 @@
         Vue.createApp({
             data() {
                 return {
+                    activePage: 0,
                     pages: [
                         {
                             link: {text: "home", url: "index.html"},
