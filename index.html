@@ -8,7 +8,10 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav 
+    class="navbar navbar-expand-lg "
+    :class="{'navbar-light bg-light': !useNavDark, 'navbar-dark bg-dark': useNavDark}"
+    >
         <div class="container">
           <a class="navbar-brand" href="#">vue bisic</a>
          
@@ -29,6 +32,14 @@
               
               
             </ul>
+            <form class="d-flex">
+                <button 
+                class="btn btn-primary"
+                @click.prevent="useNavDark = !useNavDark"
+                >
+                    toggle to nav
+                </button>
+            </form>
             
           </div>
         
@@ -43,6 +54,7 @@
         Vue.createApp({
             data() {
                 return {
+                    useNavDark: false,
                     activePage: 0,
                     pages: [
                         {
