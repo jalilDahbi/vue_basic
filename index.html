@@ -10,7 +10,7 @@
 <body>
     <nav 
     class="navbar navbar-expand-lg "
-    :class="{'navbar-light bg-light': !useNavDark, 'navbar-dark bg-dark': useNavDark}"
+    :class="navbarClasses"
     >
         <div class="container">
           <a class="navbar-brand" href="#">vue bisic</a>
@@ -52,6 +52,16 @@
     <script>
        
         Vue.createApp({
+            computed: {
+                navbarClasses() {
+                    return {
+                        'navbar-dark': this.useNavDark,
+                        'bg-dark': this.useNavDark,
+                        'navbar-light': !this.useNavDark,
+                        'bg-light': !this.useNavDark,
+                        }
+            }
+            },
             data() {
                 return {
                     useNavDark: false,
